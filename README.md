@@ -65,13 +65,27 @@ It is possible to use operator >> as pipe operator to create good looking pipeli
 import numpy as np
 from pipe import chainable, unpack
 
-chainable(10) >> np.range >> (lambda x: pow(x, 2)) >> sum >> print
+chainable(10) >> np.range >> (lambda x: map(float, x)) >> sum >> print
 
 # or 
 
 chainable(10) >> \
     np.range >> \
-    (lambda x: pow(x, 2)) >> \
+    (lambda x: map(float, x)) >> \
     sum >> \
     print
 ```
+
+## TODO
+
+- [ ] Installable package from github
+- [ ] Find how to use partial function in pipelines
+- [ ] Context manager for pipelines - for more convinient usage
+- [ ] Something to make lambdas better, like in Julia or in siuba
+
+## Other similar projects (where I'm going to sneak a couple of ideas and codes)
+
+- https://github.com/kieferk/dfply - Good looking thing, not exactly what I want, but still worthy to look deeper.
+- https://github.com/machow/siuba - I think the best working pipe operator with lambda built-in. Very worthy to steal from there some ideas)
+- https://github.com/evhub/coconut/ - Very cool fucntional dsl in python with very good working pipes like in Julia.
+
